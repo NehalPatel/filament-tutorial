@@ -48395,6 +48395,6 @@ class CitySeeder extends Seeder
             array('name' => "Ravenswood", 'state_id' => 3976),
             array('name' => "Summersville", 'state_id' => 3976),
         );
-        DB::table('cities')->insert($cities);
+        DB::table('cities')->insert($cities8);
     }
 }
