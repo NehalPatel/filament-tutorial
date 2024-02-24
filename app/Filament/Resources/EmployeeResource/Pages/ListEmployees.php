@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\EmployeeResource\Pages;
 
 use App\Filament\Resources\EmployeeResource;
+use App\Models\Employee;
 use Filament\Actions;
 use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
@@ -19,15 +20,18 @@ class ListEmployees extends ListRecords
         ];
     }
 
-    public function getTabs() : array {
+    public function getTabs(): array {
         return [
             'All' => Tab::make(),
             'This Week' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subWeek())),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subWeek()))
+                ->badge(Employee::query()->where('date_hired', '>=', now()->subWeek())->count()),
             'This Month' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subMonth())),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subMonth()))
+                ->badge(Employee::query()->where('date_hired', '>=', now()->subMonth())->count()),
             'This Year' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subYear())),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('date_hired', '>=', now()->subYear()))
+                ->badge(Employee::query()->where('date_hired', '>=', now()->subYear())->count()),
         ];
     }
 }
