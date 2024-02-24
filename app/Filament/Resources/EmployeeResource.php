@@ -97,10 +97,10 @@ class EmployeeResource extends Resource
                     ->schema([
                         DatePicker::make('date_of_birth')
                             ->displayFormat('d/M/Y')
-                            ->native(false),
+                            ->native(true),
                         DatePicker::make('date_hired')
                             ->displayFormat('d/M/Y')
-                            ->native(false),
+                            ->native(true),
                     ])->columns(2)
             ]);
     }
@@ -152,9 +152,9 @@ class EmployeeResource extends Resource
                     ->indicator('Department')
                     ->relationship('department', 'name'),
                 CreatedAtFilter::make('created_at'),
-                DateFilter::make('date_of_birth')
-                    ->label('Date of Birth')
-                    ->column('date_of_birth')
+                // DateFilter::make('date_of_birth')
+                //     ->label('Date of Birth')
+                //     ->column('date_of_birth')
             ])
             ->deferFilters()
             ->persistFiltersInSession()
