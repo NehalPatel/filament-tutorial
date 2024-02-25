@@ -36,6 +36,11 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Orange,
             ])
             ->font('Poppins')
+            ->navigationGroups([
+                'Employee Management',
+                'System Management',
+                'User Management'
+            ])
             ->brandName('Nehal Patel')
             ->brandLogo(asset('images/NP-new.svg'))
             ->brandLogoHeight('2.5rem')

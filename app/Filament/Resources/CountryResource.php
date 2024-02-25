@@ -29,6 +29,15 @@ class CountryResource extends Resource
     // protected static ?string $slug = 'countries';
     protected static ?int $navigationSort = 1;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return static::getModel()::count() > 10 ? 'warning' : 'info';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
